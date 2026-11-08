@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Happy Hassu</title>
+<meta name="description" content="Cozy coloring and activity books for little hands, ages 2 to 5. Big bold pages, sweet characters, free printable coloring pages.">
+<meta property="og:title" content="Happy Hassu · Coloring books for little hands">
+<meta property="og:description" content="Big, bold coloring and activity books for ages 2 to 5, plus free printable pages.">
+<meta property="og:image" content="assets/share.jpg">
+<meta property="og:type" content="website">
+<!-- Pinterest website claim: paste the meta tag Pinterest gives you on the next line -->
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* Layout idea: a coloring book you can scroll. Every card has the thick ink outline of a coloring page and a crayon-colored sticker shadow. */
+  --paper:#FFF8EE;
+  --paper-2:#FFEFD6;
+  --ink:#2B2340;
+  --ink-soft:#5B5470;
+  --sun:#FFC93C;
+  --berry:#E9445A;
+  --sky:#7FC4F2;
+  --leaf:#3FA86E;
+  --lav:#A98BEA;
+  --white:#FFFFFF;
+  --display:"Fredoka","Baloo 2","Arial Rounded MT Bold",system-ui,sans-serif;
+  --body:"Nunito","Segoe UI",system-ui,-apple-system,sans-serif;
+  --line:3px solid var(--ink);
+  --r:22px;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:18px;line-height:1.6;
+  background-image:radial-gradient(var(--paper-2) 1.6px,transparent 1.7px);background-size:26px 26px}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit}
+:focus-visible{outline:3px dashed var(--berry);outline-offset:4px;border-radius:8px}
+.wrap{width:min(1120px,100% - 32px);margin-inline:auto}
+h1,h2,h3{font-family:var(--display);line-height:1.12;margin:0;text-wrap:balance;font-weight:700}
+h1{font-size:clamp(2.4rem,5.6vw,4rem)}
+h2{font-size:clamp(1.9rem,3.6vw,2.6rem)}
+h3{font-size:1.4rem;font-weight:600}
+p{margin:0}
+
+/* top bar */
+.top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 0}
+.top img{width:190px;height:auto}
+.top nav{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.top nav a{font-weight:800;text-decoration:none;padding:6px 12px;border-radius:999px}
+.top nav a:hover{background:var(--paper-2)}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--display);font-weight:600;font-size:1.1rem;
+  text-decoration:none;padding:12px 22px;border:var(--line);border-radius:999px;background:var(--white);
+  box-shadow:4px 4px 0 var(--ink);transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
+.btn:active{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--ink)}
+.btn.sun{background:var(--sun)}
+.btn.berry{background:var(--berry);color:var(--white)}
+.btn.sky{background:var(--sky)}
+.btn svg{width:20px;height:20px;flex:none}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding:28px 0 56px}
+.chip{display:inline-block;font-weight:800;font-size:.95rem;background:var(--white);border:2px solid var(--ink);
+  border-radius:999px;padding:4px 14px;margin-bottom:18px}
+.hero p.lead{font-size:1.2rem;color:var(--ink-soft);margin:18px 0 26px;max-width:34ch}
+.hero .ctas{display:flex;gap:14px;flex-wrap:wrap}
+.hero h1 .scribble{position:relative;white-space:nowrap}
+.hero h1 .scribble svg{position:absolute;left:-2%;bottom:-.18em;width:104%;height:.4em;z-index:-1}
+.friends{position:relative;aspect-ratio:1/1;max-width:460px;justify-self:center;width:100%}
+.friends .blob{position:absolute;inset:6%;background:var(--sun);border:var(--line);border-radius:58% 42% 52% 48%/48% 56% 44% 52%}
+.friends .bobo{position:absolute;width:70%;left:0;top:6%;filter:drop-shadow(0 6px 0 rgba(43,35,64,.15));animation:bob 4s ease-in-out infinite}
+.friends .tilbo{position:absolute;width:36%;right:0;bottom:2%;animation:bob 4s ease-in-out -2s infinite}
+@keyframes bob{50%{transform:translateY(-8px) rotate(-1deg)}}
+.friends .tag{position:absolute;font-family:var(--display);font-weight:600;background:var(--white);border:2px solid var(--ink);
+  border-radius:14px;padding:2px 12px;font-size:1rem}
+.friends .tag.b{left:2%;bottom:16%;transform:rotate(-6deg)}
+.friends .tag.t{right:12%;top:12%;transform:rotate(5deg)}
+
+/* sections */
+section{padding:64px 0}
+.sec-head{display:grid;gap:10px;margin-bottom:34px;max-width:640px}
+.sec-head p{color:var(--ink-soft);font-size:1.1rem}
+.band{background:var(--white);border-block:var(--line)}
+
+/* books */
+.books{display:grid;grid-template-columns:repeat(2,1fr);gap:32px}
+.book{display:grid;grid-template-columns:200px 1fr;gap:24px;background:var(--white);border:var(--line);border-radius:var(--r);padding:22px;box-shadow:8px 8px 0 var(--accent)}
+.book img{border:var(--line);border-radius:10px;transform:rotate(-2deg);align-self:start}
+.book .info{display:flex;flex-direction:column;gap:12px}
+.book .meta{font-weight:800;font-size:.9rem;color:var(--ink-soft)}
+.book ul{margin:0;padding-left:1.1em;color:var(--ink-soft);font-size:1rem}
+.book ul li::marker{color:var(--accent)}
+.book .btn{align-self:flex-start;margin-top:auto}
+
+/* gallery */
+.gallery{display:grid;grid-template-columns:repeat(5,1fr);gap:18px}
+.gallery figure{margin:0;background:var(--white);border:var(--line);border-radius:14px;padding:8px;box-shadow:4px 4px 0 var(--ink);transition:transform .2s}
+.gallery figure:nth-child(odd){transform:rotate(-1.5deg)}
+.gallery figure:nth-child(even){transform:rotate(1.5deg)}
+.gallery figure:hover{transform:rotate(0) scale(1.04)}
+.gallery img{border-radius:8px;aspect-ratio:3/4;object-fit:cover;width:100%}
+.gallery figcaption{font-family:var(--display);font-weight:600;font-size:.95rem;text-align:center;padding-top:6px}
+.note{margin-top:22px;color:var(--ink-soft);font-size:.95rem}
+
+/* free pages */
+.free{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
+.freecard{display:grid;grid-template-columns:150px 1fr;gap:20px;align-items:center;background:var(--paper);border:var(--line);border-radius:var(--r);padding:18px;box-shadow:6px 6px 0 var(--accent)}
+.freecard img{border:2px solid var(--ink);border-radius:8px;background:var(--white)}
+.freecard .info{display:grid;gap:10px;justify-items:start}
+.freecard p{color:var(--ink-soft);font-size:1rem}
+
+/* tips */
+.tips{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;counter-reset:tip}
+.tip{background:var(--white);border:var(--line);border-radius:var(--r);padding:22px;display:grid;gap:10px;align-content:start;position:relative}
+.tip::before{counter-increment:tip;content:counter(tip);font-family:var(--display);font-weight:700;font-size:1.3rem;width:46px;height:46px;
+  display:grid;place-items:center;border:var(--line);border-radius:50%;background:var(--accent)}
+.tip p{color:var(--ink-soft);font-size:1rem}
+
+/* meet */
+.meet{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.pal{display:grid;grid-template-columns:140px 1fr;gap:20px;align-items:center}
+.pal .pic{background:var(--accent);border:var(--line);border-radius:50%;aspect-ratio:1;display:grid;place-items:center;overflow:hidden}
+.pal .pic img{width:88%}
+.pal p{color:var(--ink-soft)}
+
+/* follow + footer */
+.follow{text-align:center;display:grid;gap:18px;justify-items:center}
+.follow .row{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+.story{max-width:62ch;margin:0 auto;color:var(--ink-soft);font-size:1.1rem}
+footer{border-top:var(--line);padding:28px 0 40px;font-size:.92rem;color:var(--ink-soft)}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+@media (max-width:980px){
+  .books,.free,.meet{grid-template-columns:1fr}
+  .gallery{grid-template-columns:repeat(3,1fr)}
+  .tips{grid-template-columns:1fr 1fr}
+}
+@media (max-width:720px){
+  body{font-size:17px}
+  .hero{grid-template-columns:1fr;gap:28px;padding-top:8px}
+  .friends{max-width:340px;order:-1}
+  .top nav{display:none}
+  .top{justify-content:center}
+  section{padding:48px 0}
+  .book{grid-template-columns:1fr;justify-items:center;text-align:left}
+  .book img{width:200px}
+  .gallery{grid-template-columns:1fr 1fr;gap:14px}
+  .tips{grid-template-columns:1fr}
+  .freecard{grid-template-columns:110px 1fr}
+  .pal{grid-template-columns:100px 1fr}
+}
+</style>
+</head>
+<body>
+
+<header class="wrap top">
+  <a href="#top" aria-label="Happy Hassu home"><img src="assets/logo.webp" alt="Happy Hassu" width="520" height="101"></a>
+  <nav aria-label="Sections">
+    <a href="#books">Books</a>
+    <a href="#free">Free pages</a>
+    <a href="#tips">Tips</a>
+    <a href="#follow">Follow</a>
+  </nav>
+</header>
+
+<main id="top">
+  <div class="wrap hero">
+    <div>
+      <span class="chip">Coloring &amp; activity books · ages 2–5</span>
+      <h1>Cozy coloring books for <span class="scribble">little hands<svg viewBox="0 0 300 30" preserveAspectRatio="none" aria-hidden="true"><path d="M4 18 C 60 6, 120 26, 180 14 S 280 10, 296 16" fill="none" stroke="#FFC93C" stroke-width="16" stroke-linecap="round"/></svg></span></h1>
+      <p class="lead">Big, bold pictures that toddlers can actually color. Sweet friends, simple games and one happy picture on every page.</p>
+      <div class="ctas">
+        <a class="btn berry" href="#books">See the books</a>
+        <a class="btn" href="#free">Free coloring pages</a>
+      </div>
+    </div>
+    <div class="friends" aria-hidden="true">
+      <div class="blob"></div>
+      <img class="bobo" src="assets/bobo.webp" alt="">
+      <img class="tilbo" src="assets/tilbo.webp" alt="">
+      <span class="tag b">Bobo</span>
+      <span class="tag t">Tilbo</span>
+    </div>
+  </div>
+
+  <section id="books" class="band">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>The books</h2>
+        <p>Big 8.5 × 11 inch paperbacks with thick, friendly lines and plenty of room for wobbly crayon work.</p>
+      </div>
+      <div class="books">
+        <article class="book" style="--accent:var(--berry)">
+          <img src="assets/cover_christmas.jpg" alt="Cover of My First Christmas Coloring and Activity Book" width="640" height="829" loading="lazy">
+          <div class="info">
+            <span class="meta">Paperback · Ages 2–5</span>
+            <h3>My First Christmas Coloring &amp; Activity Book</h3>
+            <ul>
+              <li>Tilbo the penguin, reindeer, gingerbread friends and presents</li>
+              <li>Easy mazes, matching and find-the-star games</li>
+              <li>A screen-free stocking stuffer</li>
+            </ul>
+            <a class="btn berry" data-book="christmas" href="https://www.amazon.com/s?k=My+First+Christmas+Coloring+%26+Activity+Book+Happy+Hassu&amp;i=stripbooks" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 4V2h10v2h4v2h-1l-1.4 13.1A2 2 0 0 1 16.6 21H7.4a2 2 0 0 1-2-1.9L4 6H3V4h4Zm-.98 2 1.38 13h9.2L17.98 6H6.02Z"/></svg>
+              Buy on Amazon</a>
+          </div>
+        </article>
+        <article class="book" style="--accent:var(--lav)">
+          <img src="assets/cover_newyear.jpg" alt="Cover of My First New Year Coloring and Activity Book" width="640" height="857" loading="lazy">
+          <div class="info">
+            <span class="meta">Paperback · Ages 2–5</span>
+            <h3>My First New Year Coloring &amp; Activity Book</h3>
+            <ul>
+              <li>Bobo the puppy's big New Year's Eve, page by page</li>
+              <li>Read-aloud lines and a hidden star on every story page</li>
+              <li>Perfect for a Noon Year's Eve party</li>
+            </ul>
+            <a class="btn sun" data-book="newyear" href="https://www.amazon.com/s?k=My+First+New+Year+Coloring+%26+Activity+Book+Happy+Hassu&amp;i=stripbooks" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 4V2h10v2h4v2h-1l-1.4 13.1A2 2 0 0 1 16.6 21H7.4a2 2 0 0 1-2-1.9L4 6H3V4h4Zm-.98 2 1.38 13h9.2L17.98 6H6.02Z"/></svg>
+              Buy on Amazon</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="peek">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Peek inside</h2>
+        <p>This is what the pages look like once little artists get to work. In the book they come in black and white, ready for crayons.</p>
+      </div>
+      <div class="gallery">
+        <figure><img src="assets/page_ny_happy.jpg" alt="Bobo the puppy jumping with confetti" loading="lazy" width="520" height="696"><figcaption>Happy New Year!</figcaption></figure>
+        <figure><img src="assets/page_xmas_star.jpg" alt="Tilbo the penguin putting a star on a Christmas tree" loading="lazy" width="520" height="696"><figcaption>One big star</figcaption></figure>
+        <figure><img src="assets/page_ny_dance.jpg" alt="Bobo dancing with a bunny" loading="lazy" width="520" height="696"><figcaption>Let's dance!</figcaption></figure>
+        <figure><img src="assets/page_xmas_house.jpg" alt="Gingerbread house in the snow" loading="lazy" width="520" height="696"><figcaption>Gingerbread house</figcaption></figure>
+        <figure><img src="assets/page_ny_hugs.jpg" alt="Bobo hugging a teddy bear" loading="lazy" width="520" height="696"><figcaption>Big hugs!</figcaption></figure>
+        <figure><img src="assets/page_xmas_reindeer.jpg" alt="Little reindeer with a scarf and bell" loading="lazy" width="520" height="696"><figcaption>Little reindeer</figcaption></figure>
+        <figure><img src="assets/page_ny_bake.jpg" alt="Bobo baking a cake" loading="lazy" width="520" height="696"><figcaption>Let's bake!</figcaption></figure>
+        <figure><img src="assets/page_xmas_snowday.jpg" alt="Tilbo and a snowman" loading="lazy" width="520" height="696"><figcaption>Snowy day</figcaption></figure>
+        <figure><img src="assets/page_xmas_presents.jpg" alt="Penguin sitting on a pile of presents" loading="lazy" width="520" height="696"><figcaption>So many presents</figcaption></figure>
+        <figure><img src="assets/page_xmas_ginger.jpg" alt="Penguin holding a tray of gingerbread cookies" loading="lazy" width="520" height="696"><figcaption>Gingerbread friends</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="free" class="band">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Free pages to print today</h2>
+        <p>Try one before you buy. Print on regular letter paper and hand over the crayons.</p>
+      </div>
+      <div class="free">
+        <div class="freecard" style="--accent:var(--lav)">
+          <img src="assets/free_ny_hugs_thumb.jpg" alt="Black and white coloring page of Bobo hugging a bear" width="360" height="466" loading="lazy">
+          <div class="info">
+            <h3>Big Hugs with Bobo</h3>
+            <p>From the New Year book, with a hidden star to find.</p>
+            <a class="btn sun" href="assets/free_ny_hugs.png" download="HappyHassu_Big_Hugs_coloring_page.png" target="_blank" rel="noopener">Download page</a>
+          </div>
+        </div>
+        <div class="freecard" style="--accent:var(--berry)">
+          <img src="assets/free_xmas_reindeer_thumb.jpg" alt="Black and white coloring page of a little reindeer" width="360" height="466" loading="lazy">
+          <div class="info">
+            <h3>The Little Reindeer</h3>
+            <p>From the Christmas book. Big shapes, easy for first crayons.</p>
+            <a class="btn sun" href="assets/free_xmas_reindeer.png" download="HappyHassu_Little_Reindeer_coloring_page.png" target="_blank" rel="noopener">Download page</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="tips">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Why coloring is so good for toddlers</h2>
+        <p>Those 15 quiet minutes are building more than you might think.</p>
+      </div>
+      <div class="tips">
+        <div class="tip" style="--accent:var(--berry)"><h3>Strong little hands</h3><p>Gripping a crayon and staying near the lines builds the same muscles they'll use to write.</p></div>
+        <div class="tip" style="--accent:var(--leaf)"><h3>Colors &amp; words</h3><p>"Which color is the bow?" Coloring is a natural moment to learn colors, shapes and new words.</p></div>
+        <div class="tip" style="--accent:var(--sky)"><h3>Calm &amp; focus</h3><p>One page, one crayon, one job. It helps busy little minds slow down, perfect before naps.</p></div>
+        <div class="tip" style="--accent:var(--sun)"><h3>"I made this!"</h3><p>Finishing a page gives a real sense of pride. Hang it on the fridge and watch them glow.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Meet the friends</h2>
+      </div>
+      <div class="meet">
+        <div class="pal" style="--accent:var(--sun)">
+          <div class="pic"><img src="assets/bobo.webp" alt="Bobo the puppy" loading="lazy"></div>
+          <div><h3>Bobo the puppy</h3><p>Loves parties, cake and big hugs. Bobo is the star of the New Year book and always has a red bow on.</p></div>
+        </div>
+        <div class="pal" style="--accent:var(--sky)">
+          <div class="pic"><img src="assets/tilbo.webp" alt="Tilbo the penguin" loading="lazy"></div>
+          <div><h3>Tilbo the penguin</h3><p>A cozy little penguin in a striped hat who never says no to snow, cookies or one more present.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="follow">
+    <div class="wrap follow">
+      <h2>Come color with us</h2>
+      <p class="story">Happy Hassu makes simple, cheerful books for the littlest artists. New free pages, coloring time-lapses and easy holiday activities go up every week.</p>
+      <div class="row">
+        <a class="btn berry" href="https://www.instagram.com/happyhassu" target="_blank" rel="noopener">Instagram</a>
+        <a class="btn sun" href="https://www.pinterest.com/happyhassu" target="_blank" rel="noopener">Pinterest</a>
+        <a class="btn sky" href="https://www.youtube.com/@happyhassu" target="_blank" rel="noopener">YouTube</a>
+        <a class="btn" href="https://www.facebook.com/happyhassu" target="_blank" rel="noopener">Facebook</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Happy Hassu. Made with crayons and love.</span>
+    <span>Free pages are for personal and classroom use.</span>
+  </div>
+</footer>
+</body>
+</html>
