@@ -110,6 +110,77 @@ section{padding:64px 0}
 .gallery figcaption{font-family:var(--display);font-weight:600;font-size:.95rem;text-align:center;padding-top:6px}
 .note{margin-top:22px;color:var(--ink-soft);font-size:.95rem}
 
+/* videos: little phone-shaped screens on a sky-blue shelf */
+.band.tint{background:#EAF4FC;background-image:radial-gradient(#D6EAF8 1.6px,transparent 1.7px);background-size:26px 26px}
+.reel-track{display:flex;gap:30px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;
+  padding:18px max(16px,calc((100% - 1120px)/2)) 40px;scroll-padding-inline:max(16px,calc((100% - 1120px)/2))}
+.reel-track::-webkit-scrollbar{display:none}
+.reel{flex:0 0 auto;width:clamp(210px,60vw,236px);margin:0;scroll-snap-align:start;display:grid;justify-items:center;gap:0;
+  transform:rotate(var(--tilt,0deg));transition:transform .25s}
+.reel:nth-child(odd){--tilt:-1.6deg}.reel:nth-child(even){--tilt:1.6deg}
+.reel:hover,.reel.on{--tilt:0deg}
+.screen{position:relative;width:100%;aspect-ratio:9/16;background:var(--white);border:var(--line);border-radius:30px;padding:7px;
+  box-shadow:7px 7px 0 var(--accent)}
+.screen::before{content:"";position:absolute;top:13px;left:50%;width:44px;height:6px;margin-left:-22px;border-radius:9px;background:var(--ink);opacity:.18;z-index:1}
+.screen video{width:100%;height:100%;object-fit:cover;border-radius:22px;display:block;background:#EAF4FC;cursor:pointer}
+.snd{position:absolute;right:16px;bottom:16px;width:44px;height:44px;border-radius:50%;border:2.5px solid var(--ink);background:var(--white);
+  display:grid;place-items:center;cursor:pointer;box-shadow:3px 3px 0 var(--ink);color:var(--ink);padding:0}
+.snd svg{width:22px;height:22px}
+.play{position:absolute;left:50%;top:50%;width:76px;height:76px;margin:-38px 0 0 -38px;border-radius:50%;border:var(--line);
+  background:var(--sun);box-shadow:4px 4px 0 var(--ink);display:none;place-items:center;pointer-events:none}
+.play svg{width:30px;height:30px;margin-left:4px}
+.reel.needtap:not(.playing) .play{display:grid}
+.snd .on-i{display:none}.snd[aria-pressed="true"]{background:var(--sun)}
+.snd[aria-pressed="true"] .on-i{display:block}.snd[aria-pressed="true"] .off-i{display:none}
+.reel figcaption{margin-top:-16px;position:relative;z-index:2;background:var(--white);border:2.5px solid var(--ink);border-radius:14px;
+  padding:4px 14px;font-family:var(--display);font-weight:600;font-size:1.02rem;line-height:1.25;text-align:center;transform:rotate(-2deg)}
+.reel:nth-child(even) figcaption{transform:rotate(2deg)}
+.reel figcaption small{display:block;font-family:var(--body);font-weight:700;font-size:.78rem;color:var(--ink-soft)}
+.track-foot{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.track-foot .hint{font-weight:800;color:var(--ink-soft);font-size:.95rem}
+.arrows{display:flex;gap:12px}
+.round{width:48px;height:48px;border-radius:50%;border:var(--line);background:var(--white);box-shadow:3px 3px 0 var(--ink);
+  display:grid;place-items:center;cursor:pointer;color:var(--ink);padding:0;transition:transform .15s,opacity .2s}
+.round:hover{transform:translate(-1px,-1px)}
+.round:disabled{opacity:.35;cursor:default;transform:none}
+.round svg{width:22px;height:22px}
+
+/* idea decks: a little stack of pages you can swipe */
+.tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:30px}
+.tab{font-family:var(--display);font-weight:600;font-size:1.05rem;padding:9px 18px;border:var(--line);border-radius:999px;background:var(--white);
+  cursor:pointer;color:var(--ink);box-shadow:3px 3px 0 var(--ink)}
+.tab[aria-selected="true"]{background:var(--accent)}
+.idea{display:grid;grid-template-columns:1fr minmax(0,440px);gap:56px;align-items:center}
+.idea[hidden]{display:none}
+.idea .side{display:grid;gap:16px;align-content:center}
+.idea .side>p{color:var(--ink-soft);font-size:1.1rem}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.steps button{all:unset;box-sizing:border-box;width:100%;display:flex;align-items:center;gap:14px;padding:8px 12px;border-radius:16px;
+  border:2.5px solid transparent;cursor:pointer;font-family:var(--display);font-weight:600;font-size:1.12rem}
+.steps button:hover{background:var(--white)}
+.steps button:focus-visible{outline:3px dashed var(--berry)}
+.steps .n{flex:none;width:34px;height:34px;border-radius:50%;border:2.5px solid var(--ink);display:grid;place-items:center;background:var(--white);font-size:1rem}
+.steps button[aria-current="true"]{background:var(--white);border-color:var(--ink);box-shadow:4px 4px 0 var(--accent)}
+.steps button[aria-current="true"] .n{background:var(--accent)}
+.deck{position:relative;width:100%;max-width:440px;justify-self:center}
+.deck::before,.deck::after{content:"";position:absolute;inset:0;border:var(--line);border-radius:var(--r);background:var(--white)}
+.deck::before{transform:rotate(-4deg);background:var(--accent)}
+.deck::after{transform:rotate(2.5deg)}
+.slides{position:relative;z-index:1;display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;
+  border:var(--line);border-radius:var(--r);background:var(--white);aspect-ratio:4/5;box-shadow:6px 6px 0 rgba(43,35,64,.18)}
+.slides::-webkit-scrollbar{display:none}
+.slides>*{flex:0 0 100%;scroll-snap-align:start;scroll-snap-stop:always;width:100%;height:100%;margin:0}
+.slides img{width:100%;height:100%;object-fit:cover}
+.slide-end{display:grid;align-content:center;justify-items:center;gap:12px;padding:26px;text-align:center;background:var(--paper-2)}
+.slide-end img{width:42%;height:auto;border:var(--line);border-radius:10px;transform:rotate(-3deg);box-shadow:5px 5px 0 var(--accent)}
+.slide-end h3{font-size:1.5rem}
+.slide-end p{color:var(--ink-soft);font-size:1rem;max-width:30ch}
+.deck .round{position:absolute;top:50%;margin-top:-24px;z-index:2}
+.deck .prev{left:-24px}.deck .next{right:-24px}
+.dots{display:flex;justify-content:center;gap:8px;margin-top:22px}
+.dots button{width:12px;height:12px;border-radius:999px;border:2px solid var(--ink);background:var(--white);padding:0;cursor:pointer;transition:width .2s}
+.dots button[aria-current="true"]{width:30px;background:var(--accent)}
+
 /* free pages */
 .free{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
 .freecard{display:grid;grid-template-columns:150px 1fr;gap:20px;align-items:center;background:var(--paper);border:var(--line);border-radius:var(--r);padding:18px;box-shadow:6px 6px 0 var(--accent)}
@@ -156,7 +227,17 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   .tips{grid-template-columns:1fr}
   .freecard{grid-template-columns:110px 1fr}
   .pal{grid-template-columns:100px 1fr}
+  .reel{scroll-snap-align:center}
+  .reel-track{gap:24px}
+  .arrows{display:none}
+  .idea{grid-template-columns:1fr;gap:34px}
+  .idea .steps{display:none}
+  .deck{max-width:min(380px,100% - 24px)}
+  .deck .prev{left:-14px}.deck .next{right:-14px}
+  .deck .round{width:42px;height:42px;margin-top:-21px}
+  .tab{font-size:.98rem;padding:8px 14px}
 }
+@media (max-width:980px) and (min-width:721px){.idea{grid-template-columns:1fr 1fr;gap:40px}}
 </style>
 </head>
 <body>
@@ -165,6 +246,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   <a href="#top" aria-label="Happy Hassu home"><img src="assets/logo.webp" alt="Happy Hassu" width="520" height="101"></a>
   <nav aria-label="Sections">
     <a href="#books">Books</a>
+    <a href="#watch">Videos</a>
+    <a href="#ideas">Ideas</a>
     <a href="#free">Free pages</a>
     <a href="#tips">Tips</a>
     <a href="#follow">Follow</a>
@@ -253,6 +336,151 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     </div>
   </section>
 
+  <section id="watch" class="band tint">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Watch the pages come alive</h2>
+        <p>Short, happy videos to watch together. Tap the speaker for music. A new one comes out every week.</p>
+      </div>
+    </div>
+    <div class="reel-track" aria-label="Videos">
+        <figure class="reel" style="--accent:var(--berry)">
+          <div class="screen">
+            <video muted loop playsinline preload="none" width="720" height="1280" poster="assets/media/r1_poster.webp" data-src="assets/media/r1.mp4" aria-label="Tilbo's big star: Coloring time-lapse"></video>
+            <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M7 4.5v15a1 1 0 0 0 1.5.86l12.5-7.5a1 1 0 0 0 0-1.72L8.5 3.64A1 1 0 0 0 7 4.5z"/></svg></span>
+            <button class="snd" type="button" aria-pressed="false" aria-label="Sound for Tilbo's big star"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 9h4l5-4v14l-5-4H3z"/><path class="off-i" d="M16 9l5 6M21 9l-5 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" fill="none"/><path class="on-i" d="M15.5 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" fill="none"/></svg></button>
+          </div>
+          <figcaption>Tilbo's big star<small>Coloring time-lapse</small></figcaption>
+        </figure>
+        <figure class="reel" style="--accent:var(--lav)">
+          <div class="screen">
+            <video muted loop playsinline preload="none" width="720" height="1280" poster="assets/media/r4_poster.webp" data-src="assets/media/r4.mp4" aria-label="Bobo's New Year: Coloring time-lapse"></video>
+            <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M7 4.5v15a1 1 0 0 0 1.5.86l12.5-7.5a1 1 0 0 0 0-1.72L8.5 3.64A1 1 0 0 0 7 4.5z"/></svg></span>
+            <button class="snd" type="button" aria-pressed="false" aria-label="Sound for Bobo's New Year"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 9h4l5-4v14l-5-4H3z"/><path class="off-i" d="M16 9l5 6M21 9l-5 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" fill="none"/><path class="on-i" d="M15.5 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" fill="none"/></svg></button>
+          </div>
+          <figcaption>Bobo's New Year<small>Coloring time-lapse</small></figcaption>
+        </figure>
+        <figure class="reel" style="--accent:var(--sun)">
+          <div class="screen">
+            <video muted loop playsinline preload="none" width="720" height="1280" poster="assets/media/r5_poster.webp" data-src="assets/media/r5.mp4" aria-label="Find the hidden star: A game for little eyes"></video>
+            <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M7 4.5v15a1 1 0 0 0 1.5.86l12.5-7.5a1 1 0 0 0 0-1.72L8.5 3.64A1 1 0 0 0 7 4.5z"/></svg></span>
+            <button class="snd" type="button" aria-pressed="false" aria-label="Sound for Find the hidden star"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 9h4l5-4v14l-5-4H3z"/><path class="off-i" d="M16 9l5 6M21 9l-5 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" fill="none"/><path class="on-i" d="M15.5 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" fill="none"/></svg></button>
+          </div>
+          <figcaption>Find the hidden star<small>A game for little eyes</small></figcaption>
+        </figure>
+        <figure class="reel" style="--accent:var(--leaf)">
+          <div class="screen">
+            <video muted loop playsinline preload="none" width="720" height="1280" poster="assets/media/r2_poster.webp" data-src="assets/media/r2.mp4" aria-label="Gingerbread house: Coloring time-lapse"></video>
+            <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M7 4.5v15a1 1 0 0 0 1.5.86l12.5-7.5a1 1 0 0 0 0-1.72L8.5 3.64A1 1 0 0 0 7 4.5z"/></svg></span>
+            <button class="snd" type="button" aria-pressed="false" aria-label="Sound for Gingerbread house"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 9h4l5-4v14l-5-4H3z"/><path class="off-i" d="M16 9l5 6M21 9l-5 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" fill="none"/><path class="on-i" d="M15.5 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" fill="none"/></svg></button>
+          </div>
+          <figcaption>Gingerbread house<small>Coloring time-lapse</small></figcaption>
+        </figure>
+        <figure class="reel" style="--accent:var(--sky)">
+          <div class="screen">
+            <video muted loop playsinline preload="none" width="720" height="1280" poster="assets/media/r6_poster.webp" data-src="assets/media/r6.mp4" aria-label="Help Santa!: A maze to solve together"></video>
+            <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M7 4.5v15a1 1 0 0 0 1.5.86l12.5-7.5a1 1 0 0 0 0-1.72L8.5 3.64A1 1 0 0 0 7 4.5z"/></svg></span>
+            <button class="snd" type="button" aria-pressed="false" aria-label="Sound for Help Santa!"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 9h4l5-4v14l-5-4H3z"/><path class="off-i" d="M16 9l5 6M21 9l-5 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" fill="none"/><path class="on-i" d="M15.5 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" fill="none"/></svg></button>
+          </div>
+          <figcaption>Help Santa!<small>A maze to solve together</small></figcaption>
+        </figure>
+        <figure class="reel" style="--accent:var(--berry)">
+          <div class="screen">
+            <video muted loop playsinline preload="none" width="720" height="1280" poster="assets/media/r3_poster.webp" data-src="assets/media/r3.mp4" aria-label="Peek in the book: Christmas flip-through"></video>
+            <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M7 4.5v15a1 1 0 0 0 1.5.86l12.5-7.5a1 1 0 0 0 0-1.72L8.5 3.64A1 1 0 0 0 7 4.5z"/></svg></span>
+            <button class="snd" type="button" aria-pressed="false" aria-label="Sound for Peek in the book"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 9h4l5-4v14l-5-4H3z"/><path class="off-i" d="M16 9l5 6M21 9l-5 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" fill="none"/><path class="on-i" d="M15.5 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" fill="none"/></svg></button>
+          </div>
+          <figcaption>Peek in the book<small>Christmas flip-through</small></figcaption>
+        </figure>
+    </div>
+    <div class="wrap track-foot">
+      <span class="hint">Swipe for more · more on <a href="https://www.youtube.com/@happyhassu" target="_blank" rel="noopener">YouTube</a></span>
+      <div class="arrows">
+        <button class="round" type="button" data-dir="-1" aria-label="Previous videos"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button class="round" type="button" data-dir="1" aria-label="More videos"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+    </div>
+  </section>
+
+  <section id="ideas">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Little ideas for the holidays</h2>
+        <p>Simple, screen-free things to do with your toddler, with almost nothing to set up.</p>
+      </div>
+      <div class="tabs" role="tablist">
+        <button class="tab" role="tab" type="button" aria-selected="true" aria-controls="idea-c1" style="--accent:var(--berry);color:var(--white)">Christmas at home</button>
+        <button class="tab" role="tab" type="button" aria-selected="false" aria-controls="idea-c4" style="--accent:var(--lav)">Noon Year's Eve</button>
+      </div>
+      <div class="idea" id="idea-c1" role="tabpanel" aria-label="5 screen-free Christmas activities" style="--accent:var(--berry)">
+        <div class="side">
+          <h3>5 screen-free Christmas activities</h3>
+          <p>Easy, calm and cozy, and they buy you a hot cup of tea. Swipe through the cards and save your favorite.</p>
+          <ol class="steps">
+          <li><button type="button" data-go="1"><span class="n">1</span>Color &amp; chat</button></li>
+          <li><button type="button" data-go="2"><span class="n">2</span>Match the mittens</button></li>
+          <li><button type="button" data-go="3"><span class="n">3</span>Count the treats</button></li>
+          <li><button type="button" data-go="4"><span class="n">4</span>Design an ornament</button></li>
+          <li><button type="button" data-go="5"><span class="n">5</span>Decorate a house</button></li>
+          </ol>
+        </div>
+        <div>
+          <div class="deck">
+            <div class="slides" tabindex="0" aria-label="5 screen-free Christmas activities, swipe for more">
+            <img src="assets/media/c1_1.webp" alt="5 screen-free Christmas activities for toddlers" width="720" height="900" loading="lazy">
+            <img src="assets/media/c1_2.webp" alt="Color &amp; chat" width="720" height="900" loading="lazy">
+            <img src="assets/media/c1_3.webp" alt="Match the mittens" width="720" height="900" loading="lazy">
+            <img src="assets/media/c1_4.webp" alt="Count the treats" width="720" height="900" loading="lazy">
+            <img src="assets/media/c1_5.webp" alt="Design an ornament" width="720" height="900" loading="lazy">
+            <img src="assets/media/c1_6.webp" alt="Decorate a house" width="720" height="900" loading="lazy">
+            <div class="slide-end">
+              <img src="assets/cover_christmas.jpg" alt="" width="640" height="829" loading="lazy">
+              <h3>All 5 are inside one cozy book</h3>
+              <p>Big, easy pages for ages 2–5. Save it for a rainy day.</p>
+              <a class="btn berry" data-book="christmas" href="https://www.amazon.com/s?k=My+First+Christmas+Coloring+%26+Activity+Book+Happy+Hassu&amp;i=stripbooks" target="_blank" rel="noopener">Buy on Amazon</a>
+            </div>
+            </div>
+            <button class="round prev" type="button" aria-label="Previous slide"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <button class="round next" type="button" aria-label="Next slide"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          </div>
+          <div class="dots" aria-label="Slides"></div>
+        </div>
+      </div>
+      <div class="idea" id="idea-c4" role="tabpanel" aria-label="Noon Year's Eve with a toddler" style="--accent:var(--lav)" hidden>
+        <div class="side">
+          <h3>Noon Year's Eve with a toddler</h3>
+          <p>Celebrate at 12:00 noon, with all the fun and none of the meltdowns. Swipe through the cards and save your favorite.</p>
+          <ol class="steps">
+          <li><button type="button" data-go="1"><span class="n">1</span>Count down at noon</button></li>
+          <li><button type="button" data-go="2"><span class="n">2</span>Dance party!</button></li>
+          <li><button type="button" data-go="3"><span class="n">3</span>Bake something easy</button></li>
+          <li><button type="button" data-go="4"><span class="n">4</span>Big hugs &amp; wishes</button></li>
+          </ol>
+        </div>
+        <div>
+          <div class="deck">
+            <div class="slides" tabindex="0" aria-label="Noon Year's Eve with a toddler, swipe for more">
+            <img src="assets/media/c4_1.webp" alt="Toddler asleep by 7pm on New Year's Eve? Try Noon Year's Eve" width="720" height="900" loading="lazy">
+            <img src="assets/media/c4_2.webp" alt="Count down at noon" width="720" height="900" loading="lazy">
+            <img src="assets/media/c4_3.webp" alt="Dance party!" width="720" height="900" loading="lazy">
+            <img src="assets/media/c4_4.webp" alt="Bake something easy" width="720" height="900" loading="lazy">
+            <img src="assets/media/c4_5.webp" alt="Big hugs &amp; wishes" width="720" height="900" loading="lazy">
+            <div class="slide-end">
+              <img src="assets/cover_newyear.jpg" alt="" width="640" height="829" loading="lazy">
+              <h3>Bobo's party, page by page</h3>
+              <p>Big, easy pages for ages 2–5. Save it for a rainy day.</p>
+              <a class="btn berry" data-book="newyear" href="https://www.amazon.com/s?k=My+First+New+Year+Coloring+%26+Activity+Book+Happy+Hassu&amp;i=stripbooks" target="_blank" rel="noopener">Buy on Amazon</a>
+            </div>
+            </div>
+            <button class="round prev" type="button" aria-label="Previous slide"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <button class="round next" type="button" aria-label="Next slide"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          </div>
+          <div class="dots" aria-label="Slides"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="free" class="band">
     <div class="wrap">
       <div class="sec-head">
@@ -319,6 +547,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
       <p class="story">Happy Hassu makes simple, cheerful books for the littlest artists. New free pages, coloring time-lapses and easy holiday activities go up every week.</p>
       <div class="row">
         <a class="btn berry" href="https://www.instagram.com/happyhassu.books/" target="_blank" rel="noopener">Instagram</a>
+        <a class="btn sun" href="https://www.pinterest.com/HappyHassu/" target="_blank" rel="noopener">Pinterest</a>
+        <a class="btn sky" href="https://www.youtube.com/@happyhassu" target="_blank" rel="noopener">YouTube</a>
         <a class="btn" href="https://www.facebook.com/happyhassu.books/" target="_blank" rel="noopener">Facebook</a>
       </div>
     </div>
@@ -331,5 +561,58 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     <span>Free pages are for personal and classroom use.</span>
   </div>
 </footer>
+<script>
+(() => {
+  const calm = matchMedia("(prefers-reduced-motion: reduce)").matches || (navigator.connection && navigator.connection.saveData);
+  /* videos: load and play only while on screen, sound only when asked */
+  const vids = [...document.querySelectorAll(".reel video")];
+  const load = v => { if (!v.src) { v.src = v.dataset.src; v.preload = "auto"; } };
+  const soundOff = except => vids.forEach(v => { if (v !== except) { v.muted = true; v.parentNode.querySelector(".snd").setAttribute("aria-pressed", "false"); } });
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    const v = e.target, card = v.closest(".reel");
+    if (e.intersectionRatio >= 0.6) { card.classList.add("on"); if (!calm) { load(v); v.play().catch(e => { if (e.name === "NotAllowedError") card.classList.add("needtap"); }); } }
+    else { card.classList.remove("on"); v.pause(); }
+  }), { threshold: [0, 0.6] });
+  vids.forEach(v => { io.observe(v); const c = v.closest(".reel"); if (calm) c.classList.add("needtap");
+    v.addEventListener("playing", () => c.classList.add("playing")); v.addEventListener("pause", () => c.classList.remove("playing")); });
+  const toggle = v => {
+    const b = v.parentNode.querySelector(".snd"); load(v);
+    if (v.paused) { v.muted = false; v.play().catch(() => {}); }
+    else if (!v.muted && v.closest(".reel").classList.contains("needtap")) { v.pause(); }
+    else v.muted = !v.muted;
+    if (!v.muted) soundOff(v);
+    b.setAttribute("aria-pressed", String(!v.muted));
+  };
+  vids.forEach(v => { v.addEventListener("click", () => toggle(v)); v.parentNode.querySelector(".snd").addEventListener("click", () => toggle(v)); });
+  const track = document.querySelector(".reel-track"), arrows = document.querySelectorAll(".arrows .round");
+  const edge = () => { arrows[0].disabled = track.scrollLeft < 8; arrows[1].disabled = track.scrollLeft + track.clientWidth > track.scrollWidth - 8; };
+  arrows.forEach(b => b.addEventListener("click", () => track.scrollBy({ left: b.dataset.dir * 266 * 2, behavior: "smooth" })));
+  track.addEventListener("scroll", edge, { passive: true }); addEventListener("resize", edge); edge();
+
+  /* idea decks */
+  document.querySelectorAll(".idea").forEach(idea => {
+    const box = idea.querySelector(".slides"), n = box.children.length, dots = idea.querySelector(".dots");
+    const steps = [...idea.querySelectorAll("[data-go]")], prev = idea.querySelector(".prev"), next = idea.querySelector(".next");
+    for (let i = 0; i < n; i++) { const d = document.createElement("button"); d.type = "button"; d.setAttribute("aria-label", "Slide " + (i + 1)); d.onclick = () => go(i); dots.append(d); }
+    const go = i => box.scrollTo({ left: i * box.clientWidth, behavior: calm ? "auto" : "smooth" });
+    const at = () => Math.round(box.scrollLeft / box.clientWidth);
+    const paint = () => { const i = at();
+      [...dots.children].forEach((d, k) => d.setAttribute("aria-current", k === i));
+      steps.forEach(s => s.setAttribute("aria-current", +s.dataset.go === i));
+      prev.disabled = i === 0; next.disabled = i === n - 1; };
+    prev.onclick = () => go(at() - 1); next.onclick = () => go(at() + 1);
+    steps.forEach(s => s.onclick = () => go(+s.dataset.go));
+    box.addEventListener("scroll", paint, { passive: true });
+    box.addEventListener("keydown", e => { if (e.key === "ArrowRight") { e.preventDefault(); go(at() + 1); } if (e.key === "ArrowLeft") { e.preventDefault(); go(at() - 1); } });
+    paint();
+  });
+  const tabs = [...document.querySelectorAll(".tab")];
+  tabs.forEach(t => t.onclick = () => tabs.forEach(o => {
+    const on = o === t, panel = document.getElementById(o.getAttribute("aria-controls"));
+    o.setAttribute("aria-selected", on); o.style.color = on && o.style.getPropertyValue("--accent").includes("berry") ? "var(--white)" : "";
+    panel.hidden = !on; if (on) panel.querySelector(".slides").dispatchEvent(new Event("scroll"));
+  }));
+})();
+</script>
 </body>
 </html>
