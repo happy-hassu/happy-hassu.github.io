@@ -65,6 +65,11 @@ p{margin:0}
 .btn.berry{background:var(--berry);color:var(--white)}
 .btn.sky{background:var(--sky)}
 .btn svg{width:20px;height:20px;flex:none}
+.btn.buy{white-space:nowrap;font-size:1.2rem;padding:14px 26px;box-shadow:5px 5px 0 var(--ink)}
+.btn.buy svg{width:24px;height:24px}
+.btn .arr{display:inline-block;transition:transform .15s}
+.btn:hover .arr{transform:translateX(4px)}
+@media (max-width:720px){.btn.buy{width:100%;justify-content:center}}
 
 /* hero */
 .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding:28px 0 56px}
@@ -321,9 +326,9 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
               <li>Easy mazes, matching and find-the-star games</li>
               <li>A screen-free stocking stuffer</li>
             </ul>
-            <a class="btn berry" data-book="christmas" href="https://www.amazon.com/dp/B0HQWFVV6S" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 4V2h10v2h4v2h-1l-1.4 13.1A2 2 0 0 1 16.6 21H7.4a2 2 0 0 1-2-1.9L4 6H3V4h4Zm-.98 2 1.38 13h9.2L17.98 6H6.02Z"/></svg>
-              Buy on Amazon</a>
+            <a class="btn berry buy" data-book="christmas" href="https://www.amazon.com/dp/B0HQWFVV6S" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 18a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm10 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4ZM1 2h3.3l.9 2H21a1 1 0 0 1 .9 1.4l-3.6 7a2 2 0 0 1-1.8 1.1H8.1l-1 1.8V15H19v2H7a2 2 0 0 1-1.8-3l1.3-2.4L3 4H1V2Z"/></svg>
+              Buy on Amazon <span class="arr" aria-hidden="true">→</span></a>
           </div>
         </article>
         <article class="book" style="--accent:var(--lav)">
@@ -336,9 +341,9 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
               <li>Read-aloud lines and a hidden star on every story page</li>
               <li>Perfect for a Noon Year's Eve party</li>
             </ul>
-            <a class="btn sun" data-book="newyear" href="https://www.amazon.com/dp/B0HQWKSK71" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 4V2h10v2h4v2h-1l-1.4 13.1A2 2 0 0 1 16.6 21H7.4a2 2 0 0 1-2-1.9L4 6H3V4h4Zm-.98 2 1.38 13h9.2L17.98 6H6.02Z"/></svg>
-              Buy on Amazon</a>
+            <a class="btn sun buy" data-book="newyear" href="https://www.amazon.com/dp/B0HQWKSK71" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 18a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm10 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4ZM1 2h3.3l.9 2H21a1 1 0 0 1 .9 1.4l-3.6 7a2 2 0 0 1-1.8 1.1H8.1l-1 1.8V15H19v2H7a2 2 0 0 1-1.8-3l1.3-2.4L3 4H1V2Z"/></svg>
+              Buy on Amazon <span class="arr" aria-hidden="true">→</span></a>
           </div>
         </article>
       </div>
@@ -467,7 +472,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
               <img src="assets/cover_christmas.jpg" alt="" width="640" height="829" loading="lazy">
               <h3>All 5 are inside one cozy book</h3>
               <p>Big, easy pages for ages 2–5. Save it for a rainy day.</p>
-              <a class="btn berry" data-book="christmas" href="https://www.amazon.com/dp/B0HQWFVV6S" target="_blank" rel="noopener">Buy on Amazon</a>
+              <a class="btn berry" data-book="christmas" href="https://www.amazon.com/dp/B0HQWFVV6S" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 18a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm10 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4ZM1 2h3.3l.9 2H21a1 1 0 0 1 .9 1.4l-3.6 7a2 2 0 0 1-1.8 1.1H8.1l-1 1.8V15H19v2H7a2 2 0 0 1-1.8-3l1.3-2.4L3 4H1V2Z"/></svg> Buy on Amazon <span class="arr" aria-hidden="true">→</span></a>
             </div>
             </div>
             <button class="round prev" type="button" aria-label="Previous slide"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
@@ -499,7 +504,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
               <img src="assets/cover_newyear.jpg" alt="" width="640" height="829" loading="lazy">
               <h3>Bobo's party, page by page</h3>
               <p>Big, easy pages for ages 2–5. Save it for a rainy day.</p>
-              <a class="btn berry" data-book="newyear" href="https://www.amazon.com/dp/B0HQWKSK71" target="_blank" rel="noopener">Buy on Amazon</a>
+              <a class="btn berry" data-book="newyear" href="https://www.amazon.com/dp/B0HQWKSK71" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 18a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm10 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4ZM1 2h3.3l.9 2H21a1 1 0 0 1 .9 1.4l-3.6 7a2 2 0 0 1-1.8 1.1H8.1l-1 1.8V15H19v2H7a2 2 0 0 1-1.8-3l1.3-2.4L3 4H1V2Z"/></svg> Buy on Amazon <span class="arr" aria-hidden="true">→</span></a>
             </div>
             </div>
             <button class="round prev" type="button" aria-label="Previous slide"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
