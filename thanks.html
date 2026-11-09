@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your free pages · Happy Hassu</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FFF8EE;--paper-2:#FFEFD6;--ink:#2B2340;--ink-soft:#5B5470;--sun:#FFC93C;--berry:#E9445A;--sky:#7FC4F2;--leaf:#3FA86E;--lav:#A98BEA;--white:#FFFFFF;
+  --display:"Fredoka","Arial Rounded MT Bold",system-ui,sans-serif;--body:"Nunito","Segoe UI",system-ui,sans-serif;--line:3px solid var(--ink);--r:22px;color-scheme:light;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:18px;line-height:1.6;
+  background-image:radial-gradient(var(--paper-2) 1.6px,transparent 1.7px);background-size:26px 26px}
+img{max-width:100%;height:auto;display:block}
+.wrap{width:min(880px,100% - 32px);margin-inline:auto}
+h1,h2{font-family:var(--display);line-height:1.12;margin:0;font-weight:700;text-wrap:balance}
+h1{font-size:clamp(2.2rem,6vw,3.4rem)}
+h2{font-size:clamp(1.5rem,4vw,2rem)}
+p{margin:0}
+:focus-visible{outline:3px dashed var(--berry);outline-offset:4px;border-radius:8px}
+.top{padding:18px 0}
+.top img{width:190px}
+.card{background:var(--white);border:var(--line);border-radius:var(--r);box-shadow:8px 8px 0 var(--sun);padding:32px;display:grid;grid-template-columns:240px 1fr;gap:32px;align-items:center}
+.card img{border:var(--line);border-radius:12px;transform:rotate(-3deg)}
+.card .txt{display:grid;gap:14px;justify-items:start}
+.card .txt p{color:var(--ink-soft)}
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--display);font-weight:600;font-size:1.15rem;text-decoration:none;color:var(--ink);
+  padding:12px 24px;border:var(--line);border-radius:999px;background:var(--white);transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
+.btn.berry{background:var(--berry);color:var(--white)}
+.btn.sun{background:var(--sun)}
+.tips{margin:44px 0 0;display:grid;gap:12px}
+.tips ul{margin:0;padding-left:1.2em;color:var(--ink-soft)}
+.books{margin:44px 0;display:grid;gap:18px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.book{display:grid;grid-template-columns:110px 1fr;gap:18px;align-items:center;background:var(--white);border:var(--line);border-radius:var(--r);padding:16px;box-shadow:6px 6px 0 var(--accent)}
+.book img{border:2px solid var(--ink);border-radius:8px}
+.book div{display:grid;gap:10px;justify-items:start}
+.book h3{font-family:var(--display);font-size:1.15rem;font-weight:600;margin:0;line-height:1.2}
+footer{padding:28px 0 40px;color:var(--ink-soft);font-size:.95rem}
+footer a{color:inherit}
+@media (max-width:720px){.card{grid-template-columns:1fr;padding:24px;gap:24px}.card img{width:180px;justify-self:center}.row{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header class="wrap top"><a href="./"><img src="assets/logo.webp" alt="Happy Hassu" width="520" height="101"></a></header>
+<main class="wrap">
+  <section class="card">
+    <img src="assets/free_pack_cover.jpg" alt="Cover of the free Happy Hassu Holiday Coloring Pack" width="420" height="544">
+    <div class="txt">
+      <h1>You're in! 🎉</h1>
+      <p>Thank you for joining the Happy Hassu family. Your free coloring pack is ready: six big, easy pages with Tilbo and Bobo. We've also emailed you the link, so you can print them again anytime.</p>
+      <a class="btn berry" href="free-pack.pdf" download="HappyHassu_Free_Holiday_Coloring_Pack.pdf">Download my pages</a>
+    </div>
+  </section>
+
+  <section class="tips">
+    <h2>Tips for happy coloring</h2>
+    <ul>
+      <li>Print on regular letter paper, one page at a time. You can skip the first page.</li>
+      <li>Chunky crayons are perfect for small fists.</li>
+      <li>Coloring outside the lines is totally fine. It's how little hands learn!</li>
+    </ul>
+  </section>
+
+  <section class="books">
+    <h2>Want lots more pages?</h2>
+    <div class="row">
+      <div class="book" style="--accent:var(--berry)">
+        <img src="assets/cover_christmas.jpg" alt="My First Christmas Coloring and Activity Book cover" width="640" height="829">
+        <div><h3>My First Christmas Coloring &amp; Activity Book</h3><a class="btn sun" href="https://www.amazon.com/dp/B0HQWFVV6S" target="_blank" rel="noopener">See it on Amazon</a></div>
+      </div>
+      <div class="book" style="--accent:var(--lav)">
+        <img src="assets/cover_newyear.jpg" alt="My First New Year Coloring and Activity Book cover" width="640" height="829">
+        <div><h3>My First New Year Coloring &amp; Activity Book</h3><a class="btn sun" href="https://www.amazon.com/dp/B0HQWKSK71" target="_blank" rel="noopener">See it on Amazon</a></div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer class="wrap"><a href="./">Back to the Happy Hassu website</a> · Free pages are for personal and classroom use.</footer>
+</body>
+</html>

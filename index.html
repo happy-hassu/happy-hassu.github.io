@@ -181,6 +181,33 @@ section{padding:64px 0}
 .dots button{width:12px;height:12px;border-radius:999px;border:2px solid var(--ink);background:var(--white);padding:0;cursor:pointer;transition:width .2s}
 .dots button[aria-current="true"]{width:30px;background:var(--accent)}
 
+/* email signup (Brevo form, restyled) */
+.signup{margin-top:40px;display:grid;grid-template-columns:220px 1fr;gap:32px;align-items:center;background:var(--paper);border:var(--line);border-radius:var(--r);padding:28px;box-shadow:8px 8px 0 var(--sun)}
+.signup>img{border:var(--line);border-radius:12px;transform:rotate(-3deg);background:var(--white)}
+#signup .sib-form{padding:0;background:transparent!important;font-family:var(--body)}
+#signup .sib-form-container{padding:0}
+#signup #sib-container{max-width:none!important;padding:0!important;background:transparent!important;border:0!important;text-align:left!important}
+#signup .sib-form-block{padding:0}
+#signup .sg-title{font-family:var(--display);font-size:clamp(1.6rem,3vw,2.1rem);font-weight:700;line-height:1.15;margin-bottom:8px}
+#signup .sg-text{color:var(--ink-soft);font-size:1.05rem;margin-bottom:18px}
+#signup .entry__label{font-family:var(--display);font-weight:600;font-size:1rem;color:var(--ink)}
+#signup .entry__label::after{content:none}
+#signup .input{font-family:var(--body);font-size:1.05rem;padding:12px 16px;border:var(--line);border-radius:999px;background:var(--white);width:100%;max-width:440px;color:var(--ink);height:auto}
+#signup .input::placeholder{color:#9A93AE;font-family:var(--body)}
+#signup .sib-optin{margin:14px 0 18px}
+#signup .sib-optin .entry__choice label{padding:0!important;margin:0!important;display:flex;gap:10px;align-items:flex-start;font-size:.95rem;color:var(--ink-soft);cursor:pointer}
+#signup .sib-optin .entry__choice p{margin:0;text-indent:0;padding:0;font-family:var(--body);font-size:.95rem;color:var(--ink-soft)}
+#signup .entry__field{border:0!important;background:transparent!important;box-shadow:none!important;padding:0;max-width:440px}
+#signup .checkbox{display:none!important}
+#signup .sg-check{flex:none;width:22px;height:22px;margin:2px 0 0;accent-color:var(--berry);cursor:pointer}
+#signup .sib-optin .entry__choice label>span{text-indent:0;padding:0}
+#signup .entry__error{font-family:var(--body);font-size:.95rem;border-radius:10px;margin-top:6px}
+#signup .sib-form-block__button{font-family:var(--display)!important;font-weight:600!important;font-size:1.15rem!important;padding:12px 26px;border:var(--line)!important;border-radius:999px!important;background:var(--berry)!important;color:var(--white)!important;cursor:pointer;transition:transform .15s,box-shadow .15s}
+#signup .sib-form-block__button:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
+#signup .sg-note{font-size:.85rem;color:var(--ink-soft);margin-top:12px}
+#signup .sib-form-message-panel{max-width:none!important;border-radius:14px!important;font-family:var(--body)!important;font-size:1.05rem!important;margin:0 0 16px!important;padding:14px 16px}
+#signup .input--hidden{display:none}
+@media (max-width:720px){.signup{grid-template-columns:1fr;padding:22px;gap:22px}.signup>img{width:170px;justify-self:center}}
 /* free pages */
 .free{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
 .freecard{display:grid;grid-template-columns:150px 1fr;gap:20px;align-items:center;background:var(--paper);border:var(--line);border-radius:var(--r);padding:18px;box-shadow:6px 6px 0 var(--accent)}
@@ -239,6 +266,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 }
 @media (max-width:980px) and (min-width:721px){.idea{grid-template-columns:1fr 1fr;gap:40px}}
 </style>
+<link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
+<style>:where(.sib-form-message-panel){display:none}</style>
 </head>
 <body>
 
@@ -485,7 +514,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     <div class="wrap">
       <div class="sec-head">
         <h2>Free pages to print today</h2>
-        <p>Try one before you buy. Print on regular letter paper and hand over the crayons.</p>
+        <p>Try one before you buy. Print on regular letter paper and hand over the crayons. Want more? Get 6 extra pages free by email below.</p>
       </div>
       <div class="free">
         <div class="freecard" style="--accent:var(--lav)">
@@ -502,6 +531,56 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
             <h3>The Little Reindeer</h3>
             <p>From the Christmas book. Big shapes, easy for first crayons.</p>
             <a class="btn sun" href="assets/free_xmas_reindeer.png" download="HappyHassu_Little_Reindeer_coloring_page.png" target="_blank" rel="noopener">Download page</a>
+          </div>
+        </div>
+      </div>
+      <div class="signup" id="signup">
+        <img src="assets/free_pack_cover.jpg" alt="Cover of the free Happy Hassu Holiday Coloring Pack with Tilbo the penguin and Bobo the puppy" width="420" height="544" loading="lazy">
+        <div class="sib-form">
+          <div id="sib-form-container" class="sib-form-container">
+            <div id="error-message" class="sib-form-message-panel" style="color:#661d1d;background-color:#ffeded;border:2px solid #ff4949">
+              <div class="sib-form-message-panel__text"><span class="sib-form-message-panel__inner-text">Oops, something went wrong. Please try again.</span></div>
+            </div>
+            <div id="success-message" class="sib-form-message-panel" style="color:#085229;background-color:#e7faf0;border:2px solid #13ce66">
+              <div class="sib-form-message-panel__text"><span class="sib-form-message-panel__inner-text">Almost done! Check your inbox and tap the button in our email to get your free pages. 💌</span></div>
+            </div>
+            <div id="sib-container" class="sib-container--large sib-container--vertical">
+              <form id="sib-form" method="POST" action="https://f11139ba.sibforms.com/serve/MUIFADUgO2uPL__-nJPRf96tO6Oc1GzIhgQGqz-DiNUbB8IqAIbEvmcpIaWRgMJsPMOkQ2IE2vzArHD-yLY07deU_CNthBTCrZCIqKi99cYXN-3oZosywhoL-nwvySuW6VuDrtpEJKGTyA90PAmvNvV4HN44uSxabK8bBqOl64RhtKDG0FYoejlxUkwbFNx4ivBgRbb8hxqt-X93Qg==" data-type="subscription">
+                <h3 class="sg-title">Want 6 more? Get the free coloring pack 🎨</h3>
+                <p class="sg-text">Six big, easy pages for ages 2–5: three Christmas pages with Tilbo and three New Year pages with Bobo. Enter your email and we'll send the printable PDF right away.</p>
+                <div class="sib-input sib-form-block">
+                  <div class="form__entry entry_block">
+                    <div class="form__label-row">
+                      <label class="entry__label" for="EMAIL" data-required="*">Your email</label>
+                      <div class="entry__field"><input class="input" type="email" id="EMAIL" name="EMAIL" autocomplete="email" value="" placeholder="you@example.com" data-required="true" required></div>
+                    </div>
+                    <label class="entry__error entry__error--primary"></label>
+                  </div>
+                </div>
+                <div class="sib-optin sib-form-block" data-required="true">
+                  <div class="form__entry entry_mcq">
+                    <div class="form__label-row">
+                      <div class="entry__choice">
+                        <label>
+                          <input type="checkbox" class="sg-check" value="1" id="OPT_IN" name="OPT_IN" required>
+                          <span class="checkbox checkbox_tick_positive"></span><span><p>Yes, send me free coloring pages and news about Happy Hassu books. I can unsubscribe anytime.</p></span>
+                        </label>
+                      </div>
+                    </div>
+                    <label class="entry__error entry__error--primary"></label>
+                  </div>
+                </div>
+                <div class="sib-form-block">
+                  <button class="sib-form-block__button sib-form-block__button-with-loader" form="sib-form" type="submit">
+                    <svg class="icon clickable__icon progress-indicator__icon sib-hide-loader-icon" viewBox="0 0 512 512" aria-hidden="true"><path d="M460.116 373.846l-20.823-12.022c-5.541-3.199-7.54-10.159-4.663-15.874 30.137-59.886 28.343-131.652-5.386-189.946-33.641-58.394-94.896-95.833-161.827-99.676C261.028 55.961 256 50.751 256 44.352V20.309c0-6.904 5.808-12.337 12.703-11.982 83.556 4.306 160.163 50.864 202.11 123.677 42.063 72.696 44.079 162.316 6.031 236.832-3.14 6.148-10.75 8.461-16.728 5.01z"/></svg>
+                    SEND MY FREE PAGES
+                  </button>
+                </div>
+                <p class="sg-note">We send about two emails a month, each with a new free page. No spam, ever.</p>
+                <input type="text" name="email_address_check" value="" class="input--hidden" tabindex="-1" autocomplete="off" aria-hidden="true">
+                <input type="hidden" name="locale" value="en">
+              </form>
+            </div>
           </div>
         </div>
       </div>
@@ -616,5 +695,18 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   }));
 })();
 </script>
+<script>
+  window.REQUIRED_CODE_ERROR_MESSAGE = 'Please choose a country code';
+  window.LOCALE = 'en';
+  window.EMAIL_INVALID_MESSAGE = window.SMS_INVALID_MESSAGE = "Please check your email address and try again.";
+  window.REQUIRED_ERROR_MESSAGE = "Please fill this in.";
+  window.GENERIC_INVALID_MESSAGE = "Please check this and try again.";
+  window.INVALID_NUMBER = "Please check this and try again.";
+  window.INVALID_DATE = "Please enter a valid date";
+  window.REQUIRED_MULTISELECT_MESSAGE = 'Please select at least 1 option';
+  window.translation = { common: { selectedList: '{quantity} list selected', selectedLists: '{quantity} lists selected', selectedOption: '{quantity} selected', selectedOptions: '{quantity} selected' } };
+  var AUTOHIDE = Boolean(0);
+</script>
+<script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
 </body>
 </html>
