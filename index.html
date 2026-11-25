@@ -216,8 +216,8 @@ section{padding:64px 0}
 #signup .input--hidden{display:none}
 @media (max-width:720px){.signup{grid-template-columns:1fr;padding:22px;gap:22px}.signup>img{width:170px;justify-self:center}}
 /* free pages */
-.free{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
-.freecard{display:grid;grid-template-columns:150px 1fr;gap:20px;align-items:center;background:var(--paper);border:var(--line);border-radius:var(--r);padding:18px;box-shadow:6px 6px 0 var(--accent)}
+.free{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:stretch}
+.freecard{display:grid;grid-template-columns:112px 1fr;gap:16px;align-items:center;background:var(--paper);border:var(--line);border-radius:var(--r);padding:18px;box-shadow:6px 6px 0 var(--accent)}
 .freecard img{border:2px solid var(--ink);border-radius:8px;background:var(--white)}
 .freecard .info{display:grid;gap:10px;justify-items:start}
 .freecard p{color:var(--ink-soft);font-size:1rem}
@@ -537,6 +537,14 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
             <h3>The Little Reindeer</h3>
             <p>From the Christmas book. Big shapes, easy for first crayons.</p>
             <a class="btn sun" href="assets/free_xmas_reindeer.png" download="HappyHassu_Little_Reindeer_coloring_page.png" target="_blank" rel="noopener">Download page</a>
+          </div>
+        </div>
+        <div class="freecard" style="--accent:var(--sky)">
+          <img src="assets/window_pack_cover.jpg" alt="Christmas window painting templates: a star, a tree and a snowman painted on a window" width="360" height="466" loading="lazy">
+          <div class="info">
+            <h3>Christmas Window Painting</h3>
+            <p>12 big, easy templates to tape behind the glass and trace with washable paint.</p>
+            <a class="btn sun" href="window-painting.html">Get templates</a>
           </div>
         </div>
       </div>
